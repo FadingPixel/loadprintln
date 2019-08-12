@@ -375,6 +375,5 @@ var Print = {
 Print.load();
 Print.hide();
 Print.setSettings({lineSeparator: "line"});
-Processing.instances[0].Print = Print;
-Processing.instances[0].println = Print.log.bind(Print);
+console.log(window, Print);
 
