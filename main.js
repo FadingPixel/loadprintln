@@ -375,7 +375,13 @@ var Print = {
 Print.load();
 Print.hide();
 Print.setSettings({lineSeparator: "line"});
-console.log(window.Processing, window.Processing.instances, window.Processing.instances[0]);
-console.log(window, Print);
-window.Processing.instances[0].Print = Print;
+const PRINTS_INTERVAL = 0;
+const DEFINE_PRINTS = function() {
+    if (window.Processing.instances[0]) {
+        clearInterval(PRINTS_INTERVAL);
+        window.Processing.instances[0].Print = Print;
+        window.Processing.instances[0].println = Print.log.bind(Print);
+    }
+};
+PRINTS_INTERVAL = setInterval(DEFINE_PRINTS, 100);
 
